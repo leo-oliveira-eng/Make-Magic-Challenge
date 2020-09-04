@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="BaseEntity.Domain" Version="1.0.0-pre-3" />
     <PackageReference Include="Infra.BaseRepository" Version="1.0.0-pre-2" />
     <PackageReference Include="Message.Response.Maybe" Version="1.0.0-preview-2" />
