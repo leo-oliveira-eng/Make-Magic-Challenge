@@ -10,8 +10,14 @@ namespace Make.Magic.Challenge.Domain.Tests.Character
         readonly string _name = "Another Name";
         readonly string _role = "Another Role";
         readonly string _school = "Another School";
-        readonly string _house = "Another house Id";
+        Model.CharacterHouse _house;
         readonly string _patronus = "Another Animal";
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            _house = CharacterHouseFake();
+        }
 
         [TestMethod]
         public void UpdateCharacter_ShouldReturnAnEmptyResponse_WithValidParameters()
@@ -73,7 +79,7 @@ namespace Make.Magic.Challenge.Domain.Tests.Character
         [TestMethod]
         public void UpdateCharacter_ShouldReturnBusinessError_HouseIsEmpty()
         {
-            var response = Model.Character.Create(_name, _role, _school, string.Empty, string.Empty);
+            var response = Model.Character.Create(_name, _role, _school, null, string.Empty);
 
             response.Should().NotBeNull();
             response.HasError.Should().BeTrue();

@@ -15,7 +15,9 @@ namespace Make.Magic.Challenge.Domain.Character.Models
 
         public string School { get; private set; }
 
-        public string House { get; private set; }
+        public CharacterHouse House { get; private set; }
+
+        public long HouseId { get; private set; }
 
         public string Patronus { get; private set; }
 
@@ -26,13 +28,14 @@ namespace Make.Magic.Challenge.Domain.Character.Models
         [Obsolete(ConstructorObsoleteMessage, true)]
         Character() { }
 
-        Character(string name, string role, string school, string house, string patronus)
+        Character(string name, string role, string school, CharacterHouse house, string patronus)
             : base(Guid.NewGuid())
         {
             Name = name;
             Role = role;
             School = school;
             House = house;
+            HouseId = house.Id;
             Patronus = patronus;
         }
 
@@ -40,7 +43,7 @@ namespace Make.Magic.Challenge.Domain.Character.Models
 
         #region Methods
 
-        public static Response<Character> Create(string name, string role, string school, string house, string patronus)
+        public static Response<Character> Create(string name, string role, string school, CharacterHouse house, string patronus)
         {
             var response = Response<Character>.Create();
 
@@ -52,7 +55,7 @@ namespace Make.Magic.Challenge.Domain.Character.Models
             return response.SetValue(new Character(name, role, school, house, patronus));
         }
 
-        static void VerifyArguments(string name, string role, string school, string house, Response<Character> response)
+        static void VerifyArguments(string name, string role, string school, CharacterHouse house, Response<Character> response)
         {
             if (string.IsNullOrEmpty(name))
                 response.WithBusinessError(nameof(name), $"{nameof(name)} is invalid");
@@ -63,11 +66,11 @@ namespace Make.Magic.Challenge.Domain.Character.Models
             if (string.IsNullOrEmpty(school))
                 response.WithBusinessError(nameof(school), $"{nameof(school)} is invalid");
 
-            if (string.IsNullOrEmpty(house))
+            if (house == null)
                 response.WithBusinessError(nameof(house), $"{nameof(house)} is invalid");
         }
 
-        public Response Update(string name, string role, string school, string house, string patronus)
+        public Response Update(string name, string role, string school, CharacterHouse house, string patronus)
         {
             var response = Response<Character>.Create();
 
@@ -80,6 +83,7 @@ namespace Make.Magic.Challenge.Domain.Character.Models
             Role = role;
             School = school;
             House = house;
+            HouseId = house.Id;
             Patronus = patronus;
 
             return response;
