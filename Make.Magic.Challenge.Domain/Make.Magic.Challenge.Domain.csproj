@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Character\Factories\" />
-    <Folder Include="Character\Services\" />
+    <Folder Include="House\Services\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,13 +5,19 @@ using Model = Make.Magic.Challenge.Domain.Character.Models;
 namespace Make.Magic.Challenge.Domain.Tests.Character
 {
     [TestClass, TestCategory(nameof(Model.Character))]
-    public class CreateUnitTests
+    public class CreateUnitTests : BaseMock
     {
         readonly string _name = "Any Name";
         readonly string _role = "Any Role";
         readonly string _school = "Any School";
-        readonly string _house = "123456";
+        Model.CharacterHouse _house;
         readonly string _patronus = "eagle";
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            _house = CharacterHouseFake();
+        }
 
         [TestMethod]
         public void CreateCharacter_ShouldCreateWithValidParameters()
@@ -82,7 +88,7 @@ namespace Make.Magic.Challenge.Domain.Tests.Character
         [TestMethod]
         public void CreateCharacter_ShouldReturnBusinessError_HouseIsEmpty()
         {
-            var response = Model.Character.Create(_name, _role, _school, string.Empty, string.Empty);
+            var response = Model.Character.Create(_name, _role, _school, null, string.Empty);
 
             response.Should().NotBeNull();
             response.HasError.Should().BeTrue();

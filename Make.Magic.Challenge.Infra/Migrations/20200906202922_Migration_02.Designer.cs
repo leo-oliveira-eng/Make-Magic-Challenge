@@ -3,14 +3,16 @@ using System;
 using Make.Magic.Challenge.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Make.Magic.Challenge.Infra.Migrations
 {
     [DbContext(typeof(MakeMagicContext))]
-    partial class MakeMagicContextModelSnapshot : ModelSnapshot
+    [Migration("20200906202922_Migration_02")]
+    partial class Migration_02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
