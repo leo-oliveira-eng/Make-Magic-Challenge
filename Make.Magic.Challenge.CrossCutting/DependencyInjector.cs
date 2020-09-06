@@ -1,6 +1,6 @@
 ﻿using Make.Magic.Challenge.Domain.Character.Repositories.Contracts;
-using Make.Magic.Challenge.Domain.Character.Services;
-using Make.Magic.Challenge.Domain.Character.Services.Contracts;
+//using Make.Magic.Challenge.Domain.Character.Services;
+//using Make.Magic.Challenge.Domain.Character.Services.Contracts;
 using Make.Magic.Challenge.Domain.House.Repositories.Contracts;
 using Make.Magic.Challenge.Infra.Repositories;
 using Microsoft.Extensions.DependencyInjection;
