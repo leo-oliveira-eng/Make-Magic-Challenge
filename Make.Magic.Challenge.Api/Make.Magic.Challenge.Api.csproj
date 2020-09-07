@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Make.Magic.Challenge.CrossCutting\Make.Magic.Challenge.CrossCutting.csproj" />
+    <ProjectReference Include="..\Make.Magic.Challenge.SharedKernel\Make.Magic.Challenge.SharedKernel.csproj" />
   </ItemGroup>
 
 
