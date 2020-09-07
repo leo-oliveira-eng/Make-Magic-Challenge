@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Make.Magic.Challenge.CrossCutting.Extensions;
 using Make.Magic.Challenge.Infra.Context;
+using Make.Magic.Challenge.SharedKernel.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +35,8 @@ namespace Make.Magic.Challenge.Api
             services.AddMvc();
 
             services.AddHttpContextAccessor();
+
+            services.Configure<MagicSettings>(Configuration.GetSection(nameof(MagicSettings)));
 
             services.ConfigureDependencyInjector();
         }
