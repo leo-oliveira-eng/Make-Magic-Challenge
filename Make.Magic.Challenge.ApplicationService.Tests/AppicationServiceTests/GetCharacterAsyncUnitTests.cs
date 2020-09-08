@@ -30,7 +30,7 @@ namespace Make.Magic.Challenge.ApplicationService.Tests.AppicationServiceTests
         [TestMethod]
         public async Task GetCharacterAsync_ShouldReturnError_CharacterNotFound()
         {
-            _characterRepository.Setup(x => x.FindAsync(It.IsAny<Guid>())).ReturnsAsync(Maybe<Character>.Create());
+            _characterRepository.Setup(x => x.FindAsNoTrackingAsync(It.IsAny<Guid>())).ReturnsAsync(Maybe<Character>.Create());
 
             var response = await ApplicationService.GetCharacterAsync(Guid.NewGuid());
 
@@ -44,7 +44,7 @@ namespace Make.Magic.Challenge.ApplicationService.Tests.AppicationServiceTests
         [TestMethod]
         public async Task GetCharacterAsync_ShouldReturnSuccess_CharacterFound()
         {
-            _characterRepository.Setup(x => x.FindAsync(It.IsAny<Guid>())).ReturnsAsync(CharacterFake());
+            _characterRepository.Setup(x => x.FindAsNoTrackingAsync(It.IsAny<Guid>())).ReturnsAsync(CharacterFake());
 
             var response = await ApplicationService.GetCharacterAsync(Guid.NewGuid());
 
