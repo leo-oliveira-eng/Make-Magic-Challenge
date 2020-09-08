@@ -1,4 +1,6 @@
-﻿using Make.Magic.Challenge.Domain.Character.Factories;
+﻿using Make.Magic.Challenge.ApplicationService.Services;
+using Make.Magic.Challenge.ApplicationService.Services.Contracts;
+using Make.Magic.Challenge.Domain.Character.Factories;
 using Make.Magic.Challenge.Domain.Character.Factories.Contracts;
 using Make.Magic.Challenge.Domain.Character.Repositories.Contracts;
 using Make.Magic.Challenge.Domain.Character.Services;
@@ -25,6 +27,7 @@ namespace Make.Magic.Challenge.CrossCutting
             services.AddTransient<ICharacterRepository, CharacterRepository>();
             services.AddTransient<ICharacterService, CharacterService>();
             services.AddTransient<ICharacterFactory, CharacterFactory>();
+            services.AddTransient<ICharacterApplicationService, CharacterApplicationService>();
 
             #endregion
 

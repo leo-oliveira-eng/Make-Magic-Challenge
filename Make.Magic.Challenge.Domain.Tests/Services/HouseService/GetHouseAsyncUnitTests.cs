@@ -10,7 +10,7 @@ using HouseModel = Make.Magic.Challenge.Domain.House.Models.House;
 namespace Make.Magic.Challenge.Domain.Tests.Services.HouseService
 {
     [TestClass, TestCategory(nameof(Domain.House.Services.HouseService))]
-    public class CreateAsyncUnitTests : HouseServiceUnitTests
+    public class GetHouseAsyncUnitTests : HouseServiceUnitTests
     {
         protected override void BeforeCreateService()
         {

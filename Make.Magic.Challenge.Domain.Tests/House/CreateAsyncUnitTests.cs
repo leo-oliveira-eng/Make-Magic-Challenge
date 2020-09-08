@@ -6,7 +6,7 @@ using Model = Make.Magic.Challenge.Domain.House.Models;
 namespace Make.Magic.Challenge.Domain.Tests.House
 {
     [TestClass, TestCategory(nameof(Model.House))]
-    public class CreateUnitTests
+    public class CreateAsyncUnitTests
     {
         readonly string _externalId = "abc123";
         readonly string _name = "Any House";
