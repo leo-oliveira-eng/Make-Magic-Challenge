@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Make.Magic.Challenge.Api.Extensions;
 using Make.Magic.Challenge.CrossCutting.Extensions;
 using Make.Magic.Challenge.Infra.Context;
 using Make.Magic.Challenge.SharedKernel.Settings;
@@ -39,6 +40,8 @@ namespace Make.Magic.Challenge.Api
             services.Configure<MagicSettings>(Configuration.GetSection(nameof(MagicSettings)));
 
             services.ConfigureDependencyInjector();
+
+            services.AddPolly(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

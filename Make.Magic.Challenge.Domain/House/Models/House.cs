@@ -39,7 +39,7 @@ namespace Make.Magic.Challenge.Domain.House.Models
                 response.WithBusinessError(nameof(name), $"{nameof(name)} is invalid");
 
             if (string.IsNullOrEmpty(externalId))
-                response.WithBusinessError(nameof(externalId), $"{nameof(externalId)} is invalid");
+                response.WithBusinessError(nameof(externalId), $"HouseId is invalid");
 
             if (response.HasError)
                 return response;

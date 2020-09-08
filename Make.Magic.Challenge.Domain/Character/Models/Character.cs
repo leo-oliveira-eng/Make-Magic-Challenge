@@ -78,8 +78,8 @@ namespace Make.Magic.Challenge.Domain.Character.Models
 
             if (response.HasError)
                 return response;
-
-            House.Delete();
+            if (!House.Id.Equals(house.Id))
+                House.Delete();
 
             Name = name;
             Role = role;

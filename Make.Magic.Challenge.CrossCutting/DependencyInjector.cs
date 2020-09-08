@@ -1,4 +1,6 @@
-﻿using Make.Magic.Challenge.ApplicationService.Services;
+﻿using BaseEntity.Domain.UnitOfWork;
+using Infrastructure.UnitOfWork;
+using Make.Magic.Challenge.ApplicationService.Services;
 using Make.Magic.Challenge.ApplicationService.Services.Contracts;
 using Make.Magic.Challenge.Domain.Character.Factories;
 using Make.Magic.Challenge.Domain.Character.Factories.Contracts;
@@ -9,6 +11,7 @@ using Make.Magic.Challenge.Domain.House.Repositories.Contracts;
 using Make.Magic.Challenge.Domain.House.Services;
 using Make.Magic.Challenge.Domain.House.Services.Contracts;
 using Make.Magic.Challenge.ExternalServices.Services;
+using Make.Magic.Challenge.Infra.Context;
 using Make.Magic.Challenge.Infra.Repositories;
 using Make.Magic.Challenge.SharedKernel.ExternalServices.Contracts;
 using Make.Magic.Challenge.SharedKernel.Settings;
@@ -47,6 +50,13 @@ namespace Make.Magic.Challenge.CrossCutting
             #region ' External Services '
 
             services.AddTransient<IHarryPotterExternalService, HarryPotterExternalService>();
+            services.AddHttpClient<HarryPotterExternalService>();
+
+            #endregion
+
+            #region ' Unit of Work '
+
+            services.AddScoped<IUnitOfWork, UnitOfWork<MakeMagicContext>>();
 
             #endregion
         }
