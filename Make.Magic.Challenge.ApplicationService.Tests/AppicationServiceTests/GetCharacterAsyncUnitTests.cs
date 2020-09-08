@@ -71,7 +71,7 @@ namespace Make.Magic.Challenge.ApplicationService.Tests.AppicationServiceTests
         [TestMethod]
         public async Task GetCharacterAsync_ShouldReturnError_CharactersNotFound()
         {
-            _characterRepository.Setup(x => x.FindAsync(It.IsAny<GetCharactersDto>())).ReturnsAsync(new List<Character>());
+            _characterRepository.Setup(x => x.FindAsNoTrackingAsync(It.IsAny<GetCharactersDto>())).ReturnsAsync(new List<Character>());
 
             var response = await ApplicationService.GetCharacterAsync(GetCharactersRequestMessageFake());
 
@@ -85,7 +85,7 @@ namespace Make.Magic.Challenge.ApplicationService.Tests.AppicationServiceTests
         [TestMethod]
         public async Task GetCharacterAsync_ShouldReturnSuccess_CharactersFound()
         {
-            _characterRepository.Setup(x => x.FindAsync(It.IsAny<GetCharactersDto>())).ReturnsAsync(new List<Character> { CharacterFake() });
+            _characterRepository.Setup(x => x.FindAsNoTrackingAsync(It.IsAny<GetCharactersDto>())).ReturnsAsync(new List<Character> { CharacterFake() });
 
             var response = await ApplicationService.GetCharacterAsync(GetCharactersRequestMessageFake());
 

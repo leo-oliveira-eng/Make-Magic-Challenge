@@ -51,7 +51,7 @@ namespace Make.Magic.Challenge.ApplicationService.Services
             if (code.Equals(Guid.Empty))
                 return response.WithBusinessError($"{nameof(code)} is invalid");
 
-            var character = await CharacterRepository.FindAsync(code);
+            var character = await CharacterRepository.FindAsNoTrackingAsync(code);
 
             if (!character.HasValue)
                 return response.WithBusinessError($"Character with code {code} not found");
@@ -66,7 +66,7 @@ namespace Make.Magic.Challenge.ApplicationService.Services
             if (requestMessage == null)
                 return response.WithBusinessError("Invalid data for search character");
 
-            var characters = await CharacterRepository.FindAsync(requestMessage.ToGetCharactersDto());
+            var characters = await CharacterRepository.FindAsNoTrackingAsync(requestMessage.ToGetCharactersDto());
 
             if (!characters.Any())
                 return response.WithBusinessError("No characters with the requested characteristics.");

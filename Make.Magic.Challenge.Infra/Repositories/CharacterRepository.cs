@@ -3,6 +3,7 @@ using Make.Magic.Challenge.Domain.Character.Dtos;
 using Make.Magic.Challenge.Domain.Character.Models;
 using Make.Magic.Challenge.Domain.Character.Repositories.Contracts;
 using Make.Magic.Challenge.Infra.Context;
+using Messages.Core;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Make.Magic.Challenge.Infra.Repositories
     {
         public CharacterRepository(MakeMagicContext context) : base(context) { }
 
-        public async Task<List<Character>> FindAsync(GetCharactersDto dto)
+        public async Task<List<Character>> FindAsNoTrackingAsync(GetCharactersDto dto)
             => await DbSet.AsNoTracking()
                 .Include(x => x.House)
                     .ThenInclude(x => x.House)
@@ -51,5 +52,17 @@ namespace Make.Magic.Challenge.Infra.Repositories
                         || character.School.EndsWith(dto.School, StringComparison.OrdinalIgnoreCase)
                     ))
                 .ToListAsync();
+
+        public async Task<Maybe<Character>> FindAsNoTrackingAsync(Guid code)
+            => await DbSet.AsNoTracking()
+                .Include(x => x.House)
+                    .ThenInclude(x => x.House)
+                .FirstOrDefaultAsync(x => x.Code.Equals(code));
+
+        public async override Task<Maybe<Character>> FindAsync(Guid code)
+            => await DbSet.AsNoTracking()
+                .Include(x => x.House)
+                    .ThenInclude(x => x.House)
+                .FirstOrDefaultAsync(x => x.Code.Equals(code));
     }
 }

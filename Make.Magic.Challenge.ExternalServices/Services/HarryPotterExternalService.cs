@@ -5,6 +5,7 @@ using Messages.Core;
 using Messages.Core.Extensions;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -12,13 +13,16 @@ namespace Make.Magic.Challenge.ExternalServices.Services
 {
     public class HarryPotterExternalService : IHarryPotterExternalService
     {
-        IHttpClientFactory ClientFactory { get; }
+        HttpClient HttpClient { get; }
 
         IMagicSettings Settings { get; }
 
         public HarryPotterExternalService(IHttpClientFactory clientFactory, IMagicSettings settings)
         {
-            ClientFactory = clientFactory ?? throw new ArgumentNullException(nameof(clientFactory));
+            if (clientFactory == null)
+                throw new ArgumentNullException(nameof(clientFactory));
+
+            HttpClient = clientFactory.CreateClient("HarryPotterHttpClientConfigurationName");
             Settings = settings ?? throw new ArgumentNullException(nameof(settings));
         }
 
@@ -29,11 +33,9 @@ namespace Make.Magic.Challenge.ExternalServices.Services
             if (string.IsNullOrEmpty(houseId))
                 return response.WithBusinessError($"{houseId} is invalid");
 
-            var client = ClientFactory.CreateClient(Settings.HarryPotterAPIBaseUrl);
-
             var url = $"{houseId}?key={Settings.HarryPotterAPIKey}";
 
-            var houseResponse = await client.GetAsync(url);
+            var houseResponse = await HttpClient.GetAsync(url);
 
             return DeserializeResponseAsync(houseResponse, response);
         }
@@ -47,7 +49,7 @@ namespace Make.Magic.Challenge.ExternalServices.Services
             {
                 var content = houseResponse.Content.ReadAsStringAsync().Result;
 
-                return response.SetValue(JsonConvert.DeserializeObject<HouseResponseDto>(content));
+                return response.SetValue(JsonConvert.DeserializeObject<List<HouseResponseDto>>(content)[0]);
             }
             catch (Exception ex)
             {
