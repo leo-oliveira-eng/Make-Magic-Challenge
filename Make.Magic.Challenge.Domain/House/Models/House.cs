@@ -48,5 +48,13 @@ namespace Make.Magic.Challenge.Domain.House.Models
         }
 
         #endregion
+
+        #region Conversion Operators
+
+        public static implicit operator House(Maybe<House> entity) => entity.Value;
+
+        public static implicit operator House(Response<House> entity) => entity.Data;
+
+        #endregion
     }
 }

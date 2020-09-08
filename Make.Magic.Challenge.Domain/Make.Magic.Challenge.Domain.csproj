@@ -5,13 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Character\Factories\" />
-    <Folder Include="House\Services\" />
+    <PackageReference Include="BaseEntity.Domain" Version="1.0.0-pre-3" />
+    <PackageReference Include="Message.Response.Maybe" Version="1.0.0-preview-2" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BaseEntity.Domain" Version="1.0.0-pre-3" />
-    <PackageReference Include="Message.Response.Maybe" Version="1.0.0-preview-2" />
+    <ProjectReference Include="..\Make.Magic.Challenge.SharedKernel\Make.Magic.Challenge.SharedKernel.csproj" />
   </ItemGroup>
 
 </Project>
