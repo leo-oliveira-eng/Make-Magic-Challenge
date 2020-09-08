@@ -42,6 +42,8 @@ namespace Make.Magic.Challenge.Api
             services.ConfigureDependencyInjector();
 
             services.AddPolly(Configuration);
+
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -50,6 +52,12 @@ namespace Make.Magic.Challenge.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger().UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Make Magic Challenge");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseRouting();
 
