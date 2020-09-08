@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Http.Request.Service" Version="1.0.0-preview-1" />
+    <PackageReference Include="Message.Response.Maybe" Version="1.0.0-preview-2" />
+  </ItemGroup>
+
 </Project>

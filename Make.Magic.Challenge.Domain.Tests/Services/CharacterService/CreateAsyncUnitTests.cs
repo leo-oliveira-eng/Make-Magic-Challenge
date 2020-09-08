@@ -13,7 +13,6 @@ namespace Make.Magic.Challenge.Domain.Tests.Services.CharacterService
     [TestClass, TestCategory(nameof(Domain.Character.Services.CharacterService))]
     public class CreateAsyncUnitTests : CharacterServiceUnitTests
     {
-
         [TestMethod]
         public async Task CreateAsync_ShouldReturnResponseNewValidCharacter()
         {
