@@ -22,8 +22,6 @@ namespace Make.Magic.Challenge.ApplicationService.Tests.AppicationServiceTests
             response.Should().NotBeNull();
             response.HasError.Should().BeTrue();
             response.Messages.Should().HaveCount(1);
-            response.Data.HasValue.Should().BeFalse();
-            response.Data.Value.Should().BeNull();
             response.Messages.All(message => message.Type.Equals(MessageType.BusinessError));
         }
 
@@ -37,8 +35,6 @@ namespace Make.Magic.Challenge.ApplicationService.Tests.AppicationServiceTests
             response.Should().NotBeNull();
             response.HasError.Should().BeTrue();
             response.Messages.Should().HaveCount(1);
-            response.Data.HasValue.Should().BeFalse();
-            response.Data.Value.Should().BeNull();
             response.Messages.All(message => message.Type.Equals(MessageType.BusinessError));
         }
 
@@ -53,8 +49,6 @@ namespace Make.Magic.Challenge.ApplicationService.Tests.AppicationServiceTests
             response.Should().NotBeNull();
             response.HasError.Should().BeTrue();
             response.Messages.Should().HaveCount(1);
-            response.Data.HasValue.Should().BeFalse();
-            response.Data.Value.Should().BeNull();
             response.Messages.All(message => message.Type.Equals(MessageType.CriticalError));
         }
     }

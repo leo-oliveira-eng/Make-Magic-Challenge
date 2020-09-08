@@ -89,9 +89,9 @@ namespace Make.Magic.Challenge.ApplicationService.Services
             return response.SetValue(updateResponse.Data.Value.ToCharacterResponseMessage());
         }
 
-        public async Task<Response<RemoveCharacterResponseMessage>> RemoveAsync(Guid code)
+        public async Task<Response> RemoveAsync(Guid code)
         {
-            var response = Response<RemoveCharacterResponseMessage>.Create();
+            var response = Response.Create();
 
             if (code.Equals(Guid.Empty))
                 return response.WithBusinessError($"{nameof(code)} is invalid");

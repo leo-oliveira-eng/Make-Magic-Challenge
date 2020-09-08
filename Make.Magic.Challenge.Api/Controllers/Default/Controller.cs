@@ -21,5 +21,18 @@ namespace Make.Magic.Challenge.Api.Controllers.Default
 
             return StatusCode(500, response);
         }
+
+        protected async Task<IActionResult> WithResponseAsync(Func<Task<Response>> func)
+        {
+            var response = await func.Invoke();
+
+            if (!response.HasError)
+                return Ok(response);
+
+            if (response.Messages.Any(m => m.Type == MessageType.BusinessError))
+                return BadRequest(response);
+
+            return StatusCode(500, response);
+        }
     }
 }

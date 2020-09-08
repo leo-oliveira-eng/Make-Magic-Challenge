@@ -17,6 +17,6 @@ namespace Make.Magic.Challenge.ApplicationService.Services.Contracts
 
         Task<Response<CharacterResponseMessage>> UpdateAsync(Guid code, CharacterRequestMessage requestMessage);
 
-        Task<Response<RemoveCharacterResponseMessage>> RemoveAsync(Guid code);
+        Task<Response> RemoveAsync(Guid code);
     }
 }
