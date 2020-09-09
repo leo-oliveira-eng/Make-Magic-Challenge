@@ -8,12 +8,12 @@ namespace Make.Magic.Challenge.Connector.Middleware.Extensions
 {
     public static class MakeMagicMiddlewareExtensions
     {
-        public static IServiceCollection AddAmeApiServiceConnector(this IServiceCollection services)
+        public static IServiceCollection AddMakeMagicApiServiceConnector(this IServiceCollection services)
         {
             return services.AddHttpServices().AddTransient<IMakeMagicServiceConnector, MakeMagicServiceConnector>();
         }
 
-        public static IApplicationBuilder UseAmeApiConnector(this IApplicationBuilder app)
+        public static IApplicationBuilder UseMakeMagicApiConnector(this IApplicationBuilder app)
         {
             return app.UseHttpServices().UseMiddleware<MakeMagicMiddleware>();
         }
