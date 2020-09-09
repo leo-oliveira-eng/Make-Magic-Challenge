@@ -78,6 +78,8 @@ namespace Make.Magic.Challenge.Domain.Character.Models
 
             if (response.HasError)
                 return response;
+            if (!House.Id.Equals(house.Id))
+                House.Delete();
 
             Name = name;
             Role = role;
@@ -88,6 +90,14 @@ namespace Make.Magic.Challenge.Domain.Character.Models
 
             return response;
         }
+
+        #endregion
+
+        #region Conversion Operators
+
+        public static implicit operator Character(Maybe<Character> entity) => entity.Value;
+
+        public static implicit operator Character(Response<Character> entity) => entity.Data;
 
         #endregion
     }

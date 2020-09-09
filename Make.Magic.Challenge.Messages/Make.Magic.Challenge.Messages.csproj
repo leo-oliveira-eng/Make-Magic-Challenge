@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+	<PackageId>Make.Magic.Messages</PackageId>
+	<Version>1.0.0-preview-1</Version>
+	<Authors>Leonardo de Oliveira (leo.oliveira.eng@outlook.com)</Authors>
+	<RepositoryUrl>https://github.com/leo-oliveira-eng/Message</RepositoryUrl>
+	<RequireLicenseAcceptance>false</RequireLicenseAcceptance>
+	<RepositoryType>git</RepositoryType>
+	<NeutralLanguage />
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Http.Request.Service" Version="1.0.0-preview-1" />
+    <PackageReference Include="Message.Response.Maybe" Version="1.0.0-preview-2" />
+  </ItemGroup>
 
 </Project>

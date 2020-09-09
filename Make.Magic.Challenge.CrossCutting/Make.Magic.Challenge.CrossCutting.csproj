@@ -9,6 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Make.Magic.Challenge.ApplicationService\Make.Magic.Challenge.ApplicationService.csproj" />
+    <ProjectReference Include="..\Make.Magic.Challenge.ExternalServices\Make.Magic.Challenge.ExternalServices.csproj" />
     <ProjectReference Include="..\Make.Magic.Challenge.Infra\Make.Magic.Challenge.Infra.csproj" />
     <ProjectReference Include="..\Make.Magic.Challenge.SharedKernel\Make.Magic.Challenge.SharedKernel.csproj" />
   </ItemGroup>

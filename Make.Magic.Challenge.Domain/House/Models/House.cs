@@ -39,13 +39,21 @@ namespace Make.Magic.Challenge.Domain.House.Models
                 response.WithBusinessError(nameof(name), $"{nameof(name)} is invalid");
 
             if (string.IsNullOrEmpty(externalId))
-                response.WithBusinessError(nameof(externalId), $"{nameof(externalId)} is invalid");
+                response.WithBusinessError(nameof(externalId), $"HouseId is invalid");
 
             if (response.HasError)
                 return response;
 
             return response.SetValue(new House(externalId, name));
         }
+
+        #endregion
+
+        #region Conversion Operators
+
+        public static implicit operator House(Maybe<House> entity) => entity.Value;
+
+        public static implicit operator House(Response<House> entity) => entity.Data;
 
         #endregion
     }

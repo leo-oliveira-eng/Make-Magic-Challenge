@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Make.Magic.Challenge.Domain\Make.Magic.Challenge.Domain.csproj" />
+    <ProjectReference Include="..\Make.Magic.Challenge.Messages\Make.Magic.Challenge.Messages.csproj" />
+  </ItemGroup>
+
 </Project>

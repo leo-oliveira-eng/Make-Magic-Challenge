@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Make.Magic.Challenge.Api.Extensions;
 using Make.Magic.Challenge.CrossCutting.Extensions;
 using Make.Magic.Challenge.Infra.Context;
 using Make.Magic.Challenge.SharedKernel.Settings;
@@ -39,6 +40,10 @@ namespace Make.Magic.Challenge.Api
             services.Configure<MagicSettings>(Configuration.GetSection(nameof(MagicSettings)));
 
             services.ConfigureDependencyInjector();
+
+            services.AddPolly(Configuration);
+
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,6 +52,12 @@ namespace Make.Magic.Challenge.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger().UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Make Magic Challenge");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseRouting();
 

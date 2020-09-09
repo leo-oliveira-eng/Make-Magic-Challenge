@@ -1,6 +1,7 @@
 ﻿using BaseEntity.Domain.Entities;
+using Messages.Core;
 using System;
-using Model = Make.Magic.Challenge.Domain.House.Models;
+using HouseModel = Make.Magic.Challenge.Domain.House.Models.House;
 
 namespace Make.Magic.Challenge.Domain.Character.Models
 {
@@ -10,7 +11,7 @@ namespace Make.Magic.Challenge.Domain.Character.Models
 
         public long HouseId { get; private set; }
 
-        public Model.House House { get; private set; }
+        public HouseModel House { get; private set; }
 
         #endregion
 
@@ -19,11 +20,19 @@ namespace Make.Magic.Challenge.Domain.Character.Models
         [Obsolete(ConstructorObsoleteMessage, false)]
         CharacterHouse() { }
 
-        internal CharacterHouse (Model.House house) : base(Guid.NewGuid())
+        internal CharacterHouse (HouseModel house) : base(Guid.NewGuid())
         {
             House = house;
             HouseId = house.Id;
         }
+
+        #endregion
+
+        #region Conversion Operators
+
+        public static implicit operator CharacterHouse(Maybe<CharacterHouse> entity) => entity.Value;
+
+        public static implicit operator CharacterHouse(Response<CharacterHouse> entity) => entity.Data;
 
         #endregion
     }
