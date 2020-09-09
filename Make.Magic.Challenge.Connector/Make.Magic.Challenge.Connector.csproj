@@ -3,7 +3,7 @@
   <PropertyGroup>
 	  <TargetFramework>netstandard2.0</TargetFramework>
 	  <PackageId>Make.Magic.Connector</PackageId>
-	  <Version>1.0.0-preview-1</Version>
+	  <Version>1.0.0-preview-2</Version>
 	  <Authors>Leonardo de Oliveira (leo.oliveira.eng@outlook.com)</Authors>
 	  <RepositoryUrl>https://github.com/leo-oliveira-eng/Message</RepositoryUrl>
 	  <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
